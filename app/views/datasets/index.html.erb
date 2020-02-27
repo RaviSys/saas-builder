@@ -1,0 +1,36 @@
+<div class="container mt-5">
+	<div class="new-dataset-btn mb-3">
+		<%= link_to "Add Dataset", new_dataset_path, class: "btn btn-success btn-sm" %>
+	</div>
+  <div class="table-responsive">
+  	<table class="table table-striped">
+  		<thead>
+	  		<tr>
+	  			<th>Dataset Name</th>
+	  			<th>Dataset Description</th>
+	  			<th>Actions</th>
+	  		</tr>
+	  	</thead>	
+	  	<tbody>
+	  		<% @datasets.each do |dataset| %>
+		  		<tr>
+		  			<td><%= dataset.name %></td>
+		  			<td><%= dataset.description %></td>
+		  			<td>
+		  				<%= link_to edit_dataset_path(dataset) do %>
+		  				  <small>
+		  				  	<i class="fa fa-edit"></i>Edit
+		  				  </small>
+		  				<% end %>
+		  				<%= link_to dataset_path(dataset), data: { confirm: "Are you sure?" } do %>
+		  				  <small>
+		  				  	<i class="fa fa-trash"></i>Delete
+		  				  </small>
+		  				<% end %>
+		  			</td>
+		  		</tr>
+		  	<% end %>	
+	  	</tbody>	
+  	</table>
+  </div>
+</div>

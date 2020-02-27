@@ -1,0 +1,47 @@
+<%= form_for @dataset do |f| %>
+	<div class="submit-btn text-right">
+		<%= f.submit 'Save changes', class: "btn btn-success btn-sm" %>
+		<%= link_to 'Cancel', datasets_path, class: "btn btn-outline-secondary btn-sm" %>
+		<hr>
+	</div>
+	<h5>Fileds</h5>
+  <div class="row">
+		<div class="col-md-7 pr-0">
+			<div class="card rounded-0 p-3">
+			  <div id="fields">
+			    <%= f.fields_for :fields do |field| %>
+			      <%= render 'field_fields', f: field %>
+			    <% end %>
+			    <div class='links'>
+            <%= link_to_add_association f, :fields, class: "btn btn-outline-secondary btn-sm" do %>
+              <i class="fa fa-plus mr-2"></i>Add Fields
+            <% end %>
+          </div>
+			  </div>
+		  </div>
+		</div>
+		<div class="col-md-5 pl-0">
+			<div class="card p-3 rounded-0">
+			  <div class="form-group">
+			  	<small>
+			  		<label>Dataset Name</label>
+			  	</small>
+			  	<%= f.text_field :name, class: "form-control p-1" %>
+			  </div>
+			  <div class="form-group">
+			  	<small>
+			  		<label>Icon Image</label>
+			  	</small>
+			  	<%= f.select(:icon_image, ['icon 1', 'icon 2', 'icon 3' ], {}, { :class => 'form-control' }) %>
+			  </div>
+			  <div class="form-group">
+			  	<small>
+			  		<label>Icon Image</label>
+			  	</small>
+			  	<%= f.text_area :description, class: "form-control" %>
+			  </div>
+			</div>	
+		</div>
+	</div>	
+<% end %>
+		

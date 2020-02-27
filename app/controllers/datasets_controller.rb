@@ -47,7 +47,7 @@ class DatasetsController < ApplicationController
 	end
 
 	def dataset_params
-		params.require(:dataset).permit!
+		params.require(:dataset).permit(:name, :icon_image, :description, fields_attributes: [:id, :name, :field_type, :is_required, :position, :_destroy])
 	end
 
 	def set_dataset
