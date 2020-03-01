@@ -16,18 +16,19 @@ class DatasetRecordsController < ApplicationController
   def create
     @dataset_record = @dataset.dataset_records.new(dataset_records_params)
     respond_to do |format|
-      if @dataset_records.save
-        format.html { redirect_to dataset_dataset_records_path, notice: "Dataset records saved successfully" }
+      if @dataset_record.save
+        format.html { redirect_to @dataset, notice: "Dataset record saved successfully" }
       else
-        format.html {render :new}
+        @dataset_record.errors.full_messages
+        format.html { redirect_to @dataset, notice: "#{@dataset_record.errors.full_messages}" }
       end
     end
   end
 
   def update
     respond_to do |format|
-      if @dataset_records.update(dataset_records_params)
-        format.html { redirect_to dataset_dataset_records_path, notice: "Dataset records updated successfully" }
+      if @dataset_record.update(dataset_records_params)
+        format.html { redirect_to dataset_dataset_records_path, notice: "Dataset record updated successfully" }
       else
         format.html {render :edit}
       end
