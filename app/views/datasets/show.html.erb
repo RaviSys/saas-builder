@@ -1,40 +1,22 @@
 <div class="container">
-	<div class="row">
-		<div class="col-md-3">
-			<div class="card mt-5 text-center">
-				<i class="fa fa-user mt-2" aria-hidden="true"></i>
-				<p>client</p>
-				<p>Lorem ipsum dolor sit</p>
-				<p>1 record</p>
-				<button class="btn btn-success btn-sm rounded button mb-3 ml-3">View Record</button>
-			</div>
-		</div>
-		<div class="col-md-3">
-			<div class="card mt-5 text-center">
-				<i class="fa fa-user mt-2" aria-hidden="true"></i>
-				<p>client</p>
-				<p>Lorem ipsum dolor sit</p>
-				<p>1 record</p>
-				<button class="btn btn-success btn-sm rounded">View Record</button>
-			</div>
-		</div>
-		<div class="col-md-3">
-			<div class="card mt-5 text-center">
-				<i class="fa fa-user mt-2" aria-hidden="true"></i>
-				<p>client</p>
-				<p>Lorem ipsum dolor sit</p>
-				<p>1 record</p>
-				<button class="btn btn-success btn-sm rounded">View Record</button>
-			</div>
-		</div>
-    <div class="col-md-3">
-			<div class="card mt-5 text-center">
-				<i class="fa fa-user mt-2" aria-hidden="true"></i>
-				<p>client</p>
-				<p>Lorem ipsum dolor sit</p>
-				<p>1 record</p>
-				<button class="btn btn-success btn-sm rounded">View Record</button>
-			</div>
-		</div>
-	</div>
+  <div class="mt-5">
+    <%= link_to "Add #{@dataset.name.titleize}", new_dataset_dataset_record_path(@dataset), class: "btn btn-primary", data: { target: "#newDatasetRecord", toggle: "modal", remote: true } %>
+  </div>
+  <div class="row">
+    <% 4.times do |i| %>
+      <div class="col-md-3">
+        <div class="card mt-5 text-center">
+          <div class="card-body">
+            <i class="fa fa-user mt-2" aria-hidden="true"></i>
+            <p>client</p>
+            <p>Lorem ipsum dolor sit</p>
+            <p>1 record</p>
+            <button class="btn btn-success btn-sm rounded button mb-3">View Record</button>
+         </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<div class="modal fade" id="newDatasetRecord" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 </div>

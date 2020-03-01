@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  dateset: one
+  token: MyString
+
+two:
+  dateset: two
+  token: MyString

@@ -1,0 +1,5 @@
+<div class="input-holder form-group">
+  <%= f.label f.object.field.name %>
+  <%= f.text_field :value, class: 'form-control' %>
+  <%= f.hidden_field :field_id, value: f.object.field.id %>
+</div>

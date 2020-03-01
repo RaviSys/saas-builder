@@ -7,7 +7,7 @@
   </div>
   <div class="form-group">
     <small>
-      <label for="exampleFormControlSelect1">Field Type</label>
+      <label>Field Type</label>
     </small>  
     <%= f.select :field_type, options_for_select(Field::FIELD_TYPE, selected: f.object.field_type), { prompt: "Select Field Type" }, { class: "form-control",required: true} %>
   </div>

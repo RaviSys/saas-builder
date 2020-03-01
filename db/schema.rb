@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_25_172115) do
+ActiveRecord::Schema.define(version: 2020_02_29_084149) do
+
+  create_table "dataset_records", force: :cascade do |t|
+    t.integer "dataset_id"
+    t.string "token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dataset_id"], name: "index_dataset_records_on_dataset_id"
+  end
 
   create_table "datasets", force: :cascade do |t|
     t.string "name"
@@ -18,6 +26,7 @@ ActiveRecord::Schema.define(version: 2020_02_25_172115) do
     t.string "icon_image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "token"
   end
 
   create_table "field_values", force: :cascade do |t|
@@ -25,6 +34,8 @@ ActiveRecord::Schema.define(version: 2020_02_25_172115) do
     t.integer "field_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "dataset_record_id"
+    t.index ["dataset_record_id"], name: "index_field_values_on_dataset_record_id"
     t.index ["field_id"], name: "index_field_values_on_field_id"
   end
 

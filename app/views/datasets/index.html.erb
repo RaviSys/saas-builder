@@ -18,12 +18,12 @@
 		  			<td><%= dataset.description %></td>
 		  			<td>
 		  				<%= link_to edit_dataset_path(dataset) do %>
-		  				  <small>
+		  				  <small class="text-dark">
 		  				  	<i class="fa fa-edit"></i>Edit
 		  				  </small>
 		  				<% end %>
 		  				<%= link_to dataset_path(dataset), data: { confirm: "Are you sure?" } do %>
-		  				  <small>
+		  				  <small class="text-dark">
 		  				  	<i class="fa fa-trash"></i>Delete
 		  				  </small>
 		  				<% end %>
