@@ -1,5 +1,6 @@
 <div class="input-holder form-group">
   <%= f.label f.object.field.name %>
-  <%= f.text_field :value, class: 'form-control' %>
+  <%= f.text_field :value, class: 'form-control', required: (f.object.field.is_required ? true : false) %>
+  <%#= send("get_field_form_tag(f.object.field)", :value, nil, class: 'form-control', required: (f.object.field.is_required ? true : false)) %>
   <%= f.hidden_field :field_id, value: f.object.field.id %>
 </div>

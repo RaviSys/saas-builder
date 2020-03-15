@@ -3,19 +3,35 @@
     <%= link_to "Add #{@dataset.name.titleize}", new_dataset_dataset_record_path(@dataset), class: "btn btn-primary", data: { target: "#newDatasetRecord", toggle: "modal", remote: true } %>
   </div>
   <div class="row">
-    <% 4.times do |i| %>
-      <div class="col-md-3">
-        <div class="card mt-5 text-center">
-          <div class="card-body">
-            <i class="fa fa-user mt-2" aria-hidden="true"></i>
-            <p>client</p>
-            <p>Lorem ipsum dolor sit</p>
-            <p>1 record</p>
-            <button class="btn btn-success btn-sm rounded button mb-3">View Record</button>
-         </div>
-        </div>
+    <div class="col-12">
+      <div class="table-responsive">
+        <% if @dataset_records.present? %>
+          <table class="table table-bordered">
+            <thead>
+              <% @dataset.fields.each do |field| %>
+                <th><%= field.name %></th>
+              <% end %>
+              <th>Actions</th>
+            </thead>
+            <tbody>
+              <% @dataset_records.each do |dataset_record| %>
+                <tr>
+                  <% dataset_record.field_values.each do |field_value| %>
+                    <td><%= field_value.value %></td>
+                  <% end %>
+                  <td>
+                    <%= link_to 'Edit', edit_dataset_dataset_record_path(@dataset, dataset_record), data: { target: "#newDatasetRecord", toggle: "modal", remote: true } %>
+                    <%= link_to 'Show', dataset_dataset_record_path(@dataset, dataset_record), data: { target: "#newDatasetRecord", toggle: "modal", remote: true } %>
+                    <%= link_to 'Delete', dataset_dataset_record_path(@dataset, dataset_record), method: :delete, data: { confirm: "Are you sure?" } %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <% else %>
+        <% end %>
       </div>
-    <% end %>
+    </div>
   </div>
 </div>
 <div class="modal fade" id="newDatasetRecord" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

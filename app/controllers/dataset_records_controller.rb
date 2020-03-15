@@ -28,7 +28,7 @@ class DatasetRecordsController < ApplicationController
   def update
     respond_to do |format|
       if @dataset_record.update(dataset_records_params)
-        format.html { redirect_to dataset_dataset_records_path, notice: "Dataset record updated successfully" }
+        format.html { redirect_to @dataset, notice: "Dataset record updated successfully" }
       else
         format.html {render :edit}
       end
@@ -36,9 +36,9 @@ class DatasetRecordsController < ApplicationController
   end
 
   def destroy
-    @dataset_records.destroy
+    @dataset_record.destroy
     respond_to do |format|
-      format.html { redirect_to dataset_dataset_records_path, notice: "Dataset records deleted successfully" }
+      format.html { redirect_to @dataset, notice: "Dataset records deleted successfully" }
     end
   end
 
@@ -46,6 +46,10 @@ class DatasetRecordsController < ApplicationController
 
   def parent_model
     Dataset
+  end
+
+  def model_class
+    DatasetRecord
   end
 
   def set_dataset
@@ -57,6 +61,6 @@ class DatasetRecordsController < ApplicationController
   end
 
   def set_dataset_record
-    @dataset_records = set_dataset.dataset_records.find(params[:id])
+    @dataset_record = set_dataset.dataset_records.find(params[:id])
   end
 end

@@ -13,5 +13,4 @@ class DatasetRecord < ApplicationRecord
       break random_token unless DatasetRecord.exists?(token: random_token)
     end
   end
-
 end
